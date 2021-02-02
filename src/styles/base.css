@@ -1,0 +1,26 @@
+/** @format */
+
+.img_poster {
+  object-fit: contain;
+  width: 100%;
+  position: absolute;
+}
+.scroll_fix {
+  display: flex;
+  overflow-x: scroll;
+  padding: 12px;
+}
+.scroll_fix::-webkit-scrollbar {
+  display: none;
+}
+.paper_ {
+  position: relative;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  transition: transform 1ms;
+}
+.paper_:hover {
+  transform: scale(1.08);
+}
