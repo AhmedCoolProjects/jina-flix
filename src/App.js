@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+/** @format */
+
+import React from "react";
+import BottomNavbarDrawer_ from "./components/BottomNavbarDrawer_";
+import MovieRoom_ from "./pages/MovieRoom_";
+import LoginPage_ from "./pages/LoginPage_";
+import SingUpPage_ from "./pages/SingUpPage_";
+import DashboardPage_ from "./pages/DashboardPage_";
+
+// import logo from './logo.svg';
+
+function App_() {
+  return (
+    <div className='App'>
+      thanks GOD
+      <BottomNavbarDrawer_ />
+      <DashboardPage_ />
+      <LoginPage_ />
+      <SingUpPage_ />
+      <MovieRoom_ />
+    </div>
+  );
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <App_ />
     </div>
   );
 }
