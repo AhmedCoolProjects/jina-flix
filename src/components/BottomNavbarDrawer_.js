@@ -10,8 +10,16 @@ import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
+import WhatshotIcon from "@material-ui/icons/Whatshot";
+import ThumbUpIcon from "@material-ui/icons/ThumbUp";
+import DevicesOtherIcon from "@material-ui/icons/DevicesOther";
+import FireplaceIcon from "@material-ui/icons/Fireplace";
+import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
+import SentimentVerySatisfiedOutlinedIcon from "@material-ui/icons/SentimentVerySatisfiedOutlined";
+import SentimentVeryDissatisfiedOutlinedIcon from "@material-ui/icons/SentimentVeryDissatisfiedOutlined";
+import HdOutlinedIcon from "@material-ui/icons/HdOutlined";
+
+import { categories } from "./Constants_";
 
 const useStyles = makeStyles({
   list: {
@@ -23,6 +31,16 @@ const useStyles = makeStyles({
 });
 
 export default function BottomNavbarDrawer_() {
+  const iconsList = [
+    <WhatshotIcon />,
+    <ThumbUpIcon />,
+    <DevicesOtherIcon />,
+    <FireplaceIcon />,
+    <FavoriteBorderOutlinedIcon />,
+    <SentimentVerySatisfiedOutlinedIcon />,
+    <SentimentVeryDissatisfiedOutlinedIcon />,
+    <HdOutlinedIcon />,
+  ];
   const classes = useStyles();
   const [state, setState] = React.useState({
     bottom: false,
@@ -49,22 +67,18 @@ export default function BottomNavbarDrawer_() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+        {categories.slice(0, 3).map((text, index) => (
           <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
+            <ListItemIcon>{iconsList[index]}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}
       </List>
       <Divider />
       <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
+        {categories.slice(3).map((text, index) => (
           <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
+            <ListItemIcon>{iconsList[index + 3]}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}

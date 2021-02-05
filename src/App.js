@@ -7,6 +7,7 @@ import LoginPage_ from "./pages/LoginPage_";
 import SingUpPage_ from "./pages/SingUpPage_";
 import DashboardPage_ from "./pages/DashboardPage_";
 import "./styles/base.css";
+import CategoryPage_ from "./pages/CategoryPage_";
 // import logo from './logo.svg';
 
 function App_() {
@@ -14,6 +15,7 @@ function App_() {
     <div className='App'>
       <BottomNavbarDrawer_ />
       <DashboardPage_ />
+      {/* <CategoryPage_ /> */}
     </div>
   );
 }

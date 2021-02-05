@@ -18,7 +18,7 @@ function HorizontalScroll_({ title, fetchedUrl }) {
 
   return (
     <div>
-      {title}
+      <h2>{title}</h2>
       <div className='scroll_fix'>
         {movies.map((movie, key) => (
           <CardPaper_

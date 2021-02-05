@@ -2,46 +2,42 @@
 
 import React from "react";
 import requests from "../api/Requests_";
+import { categories } from "../components/Constants_";
 import HorizontalScroll_ from "../components/HorizontalScroll_";
-import moment from "moment";
 
 function DashboardPage_() {
   return (
     <div>
       <HorizontalScroll_
-        title={`Trending ${moment(Date.now()).format("MMMM Do YYYY")}`}
+        title={categories[0]}
         fetchedUrl={requests.fetchTrending}
       />
       <HorizontalScroll_
-        title='Top Rated'
+        title={categories[1]}
         fetchedUrl={requests.fetchTopRated}
       />
       <HorizontalScroll_
-        title='Netflix Originals'
+        title={categories[2]}
         fetchedUrl={requests.fetchNetflixOriginals}
       />
       <HorizontalScroll_
-        title='Netflix Originals'
-        fetchedUrl={requests.fetchNetflixOriginals}
-      />
-      <HorizontalScroll_
-        title='Action Movies'
+        title={categories[4]}
         fetchedUrl={requests.fetchActionMovies}
       />
       <HorizontalScroll_
-        title='Romance Movies'
+        title={categories[5]}
         fetchedUrl={requests.fetchRomanceMovies}
       />
       <HorizontalScroll_
-        title='Comedy Movies'
+        title={categories[6]}
         fetchedUrl={requests.fetchComedyMovies}
       />
       <HorizontalScroll_
-        title='Horror Movies'
+        title={categories[7]}
         fetchedUrl={requests.fetchHorrorMovies}
       />
       <HorizontalScroll_
-        title='Documentaries'
+        title={categories[8]}
         fetchedUrl={requests.fetchDocumentaries}
       />
     </div>
