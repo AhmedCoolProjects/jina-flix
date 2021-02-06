@@ -10,6 +10,7 @@ import IconButton from "@material-ui/core/IconButton";
 import InfoIcon from "@material-ui/icons/Info";
 import axios, { imageBaseUrl } from "../api/axios";
 import requests from "../api/Requests_";
+import { categories, categoriesUri } from "../components/Constants_";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,9 +29,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CategoryPage_({
-  fetchedUrl = requests.fetchNetflixOriginals,
-}) {
+export default function CategoryPage_({ category_ }) {
+  const fetchedUrl = requests[category_];
+  const category_name = categories[categoriesUri.indexOf(category_)];
   const classes = useStyles();
   const [movies, setMovies] = useState([]);
   // get the list of object movies and push it inside the movies variable
@@ -41,7 +42,6 @@ export default function CategoryPage_({
     }
     fetchData();
   }, [fetchedUrl]);
-  console.log(movies);
 
   return (
     <div className={classes.root}>
@@ -51,21 +51,33 @@ export default function CategoryPage_({
         spacing={3}
         className={classes.gridList}>
         <GridListTile key='Subheader' cols={3} style={{ height: "auto" }}>
-          <ListSubheader component='div'>Category Name</ListSubheader>
+          <ListSubheader component='div'>{category_name}</ListSubheader>
         </GridListTile>
         {movies.map((movie, key) => (
           <GridListTile key={key}>
             <img
               style={{ objectFit: "contain" }}
               src={`${imageBaseUrl}${movie.poster_path}`}
-              alt={movie.original_name}
+              alt={
+                movie.original_title === undefined
+                  ? movie.original_name
+                  : movie.original_title
+              }
             />
             <GridListTileBar
-              title={movie.original_name}
+              title={
+                movie.original_title === undefined
+                  ? movie.original_name
+                  : movie.original_title
+              }
               subtitle={<span>overview: {movie.overview}</span>}
               actionIcon={
                 <IconButton
-                  aria-label={`info about ${movie.original_name}`}
+                  aria-label={`info about ${
+                    movie.original_title === undefined
+                      ? movie.original_name
+                      : movie.original_title
+                  }`}
                   className={classes.icon}>
                   <InfoIcon />
                 </IconButton>

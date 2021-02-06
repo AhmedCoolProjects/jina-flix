@@ -19,7 +19,9 @@ import SentimentVerySatisfiedOutlinedIcon from "@material-ui/icons/SentimentVery
 import SentimentVeryDissatisfiedOutlinedIcon from "@material-ui/icons/SentimentVeryDissatisfiedOutlined";
 import HdOutlinedIcon from "@material-ui/icons/HdOutlined";
 
-import { categories } from "./Constants_";
+import { categories, links } from "./Constants_";
+import requests from "../api/Requests_";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   list: {
@@ -31,6 +33,7 @@ const useStyles = makeStyles({
 });
 
 export default function BottomNavbarDrawer_() {
+  const names_ = Object.keys(requests);
   const iconsList = [
     <WhatshotIcon />,
     <ThumbUpIcon />,
@@ -53,7 +56,6 @@ export default function BottomNavbarDrawer_() {
     ) {
       return;
     }
-
     setState({ ...state, [anchor]: open });
   };
 
@@ -64,23 +66,32 @@ export default function BottomNavbarDrawer_() {
       })}
       role='presentation'
       onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
+      onKeyDown={toggleDrawer(anchor, false)}>
       <List>
         {categories.slice(0, 3).map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{iconsList[index]}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
+          <Link
+            key={index}
+            style={{ color: "inherit", textDecoration: "inherit" }}
+            to={"/category/" + names_[index]}>
+            <ListItem button key={text}>
+              <ListItemIcon>{iconsList[index]}</ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          </Link>
         ))}
       </List>
       <Divider />
       <List>
         {categories.slice(3).map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{iconsList[index + 3]}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
+          <Link
+            key={index + 3}
+            style={{ color: "inherit", textDecoration: "inherit" }}
+            to={"/category/" + names_[index + 3]}>
+            <ListItem button key={text}>
+              <ListItemIcon>{iconsList[index + 3]}</ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          </Link>
         ))}
       </List>
     </div>
@@ -93,8 +104,7 @@ export default function BottomNavbarDrawer_() {
         <Drawer
           anchor='bottom'
           open={state["bottom"]}
-          onClose={toggleDrawer("bottom", false)}
-        >
+          onClose={toggleDrawer("bottom", false)}>
           {list("bottom")}
         </Drawer>
       </React.Fragment>

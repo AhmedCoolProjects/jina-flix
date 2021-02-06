@@ -11,7 +11,6 @@ function HorizontalScroll_({ title, fetchedUrl }) {
     async function fetchData() {
       const request = await axios.get(fetchedUrl);
       setMovies(request.data.results);
-      console.log(movies);
     }
     fetchData();
   }, [fetchedUrl]);
