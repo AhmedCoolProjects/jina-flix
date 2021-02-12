@@ -46,11 +46,11 @@ export default function CategoryPage_({ category_ }) {
   return (
     <div className={classes.root}>
       <GridList
-        cols={3}
-        cellHeight={500}
+        cols={2}
+        cellHeight={600}
         spacing={3}
         className={classes.gridList}>
-        <GridListTile key='Subheader' cols={3} style={{ height: "auto" }}>
+        <GridListTile key='Subheader' cols={2} style={{ height: "auto" }}>
           <ListSubheader component='div'>{category_name}</ListSubheader>
         </GridListTile>
         {movies.map((movie, key) => (

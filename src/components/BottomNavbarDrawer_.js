@@ -4,7 +4,6 @@ import React from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
-import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
@@ -18,10 +17,11 @@ import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutline
 import SentimentVerySatisfiedOutlinedIcon from "@material-ui/icons/SentimentVerySatisfiedOutlined";
 import SentimentVeryDissatisfiedOutlinedIcon from "@material-ui/icons/SentimentVeryDissatisfiedOutlined";
 import HdOutlinedIcon from "@material-ui/icons/HdOutlined";
-
-import { categories, links } from "./Constants_";
+import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
+import { categories } from "./Constants_";
 import requests from "../api/Requests_";
 import { Link } from "react-router-dom";
+import TopNavBAR_ from "./TopNavBar_";
 
 const useStyles = makeStyles({
   list: {
@@ -68,6 +68,14 @@ export default function BottomNavbarDrawer_() {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}>
       <List>
+        <Link to='/' style={{ color: "inherit", textDecoration: "inherit" }}>
+          <ListItem button>
+            <ListItemIcon>
+              <HomeOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText primary='Dashboard' />
+          </ListItem>
+        </Link>
         {categories.slice(0, 3).map((text, index) => (
           <Link
             key={index}
@@ -87,7 +95,7 @@ export default function BottomNavbarDrawer_() {
             key={index + 3}
             style={{ color: "inherit", textDecoration: "inherit" }}
             to={"/category/" + names_[index + 3]}>
-            <ListItem button key={text}>
+            <ListItem button>
               <ListItemIcon>{iconsList[index + 3]}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
@@ -96,11 +104,11 @@ export default function BottomNavbarDrawer_() {
       </List>
     </div>
   );
-
   return (
     <div>
       <React.Fragment>
-        <Button onClick={toggleDrawer("bottom", true)}>Bottom</Button>
+        {/* <Button onClick={toggleDrawer("bottom", true)}>Bottom</Button> */}
+        <TopNavBAR_ clicked={(a, b) => toggleDrawer(a, b)} />
         <Drawer
           anchor='bottom'
           open={state["bottom"]}

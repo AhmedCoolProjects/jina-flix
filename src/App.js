@@ -9,14 +9,13 @@ import DashboardPage_ from "./pages/DashboardPage_";
 import "./styles/base.css";
 import CategoryPage_ from "./pages/CategoryPage_";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-// import logo from './logo.svg';
 
 function App_() {
   return (
     <Router>
+      <BottomNavbarDrawer_ />
       <Switch>
         <div className='App'>
-          <BottomNavbarDrawer_ />
           <Route exact path='/'>
             <DashboardPage_ />
           </Route>
@@ -27,9 +26,16 @@ function App_() {
               <CategoryPage_ category_={props.match.params.id} />
             )}
           />
-          <Route exact path='/room'>
-            <MovieRoom_ />
-          </Route>
+          <Route
+            exact
+            path='/movie/:id'
+            render={(props) => (
+              <MovieRoom_
+                movie_id={props.match.params.id.split("--")[1]}
+                category_={props.match.params.id.split("--")[0]}
+              />
+            )}
+          />
           <Route exact path='/login'>
             <LoginPage_ />
           </Route>

@@ -3,8 +3,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "../api/axios";
 import CardPaper_ from "./CardPaper_";
+import { Link } from "react-router-dom";
 
-function HorizontalScroll_({ title, fetchedUrl }) {
+function HorizontalScroll_({ title, fetchedUrl, categoryName }) {
   const [movies, setMovies] = useState([]);
   // get the list of object movies and push it inside the movies variable
   useEffect(() => {
@@ -20,12 +21,20 @@ function HorizontalScroll_({ title, fetchedUrl }) {
       <h2>{title}</h2>
       <div className='scroll_fix'>
         {movies.map((movie, key) => (
-          <CardPaper_
+          <Link
             key={key}
-            title={movie.original_title}
-            poster={movie.poster_path}
-            overview={movie.overview}
-          />
+            style={{ color: "inherit", textDecoration: "inherit" }}
+            to={"/movie/" + categoryName + "--" + movie.id}>
+            <CardPaper_
+              title={
+                movie.original_title === undefined
+                  ? movie.original_name
+                  : movie.original_title
+              }
+              poster={movie.poster_path}
+              overview={movie.overview}
+            />
+          </Link>
         ))}
       </div>
     </div>

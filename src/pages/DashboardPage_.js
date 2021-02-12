@@ -9,35 +9,43 @@ function DashboardPage_() {
   return (
     <div>
       <HorizontalScroll_
+        categoryName='fetchTrending'
         title={categories[0]}
         fetchedUrl={requests.fetchTrending}
       />
       <HorizontalScroll_
+        categoryName='fetchTopRated'
         title={categories[1]}
         fetchedUrl={requests.fetchTopRated}
       />
       <HorizontalScroll_
+        categoryName='fetchNetflixOriginals'
         title={categories[2]}
         fetchedUrl={requests.fetchNetflixOriginals}
       />
       <HorizontalScroll_
-        title={categories[4]}
+        categoryName='fetchActionMovies'
+        title={categories[3]}
         fetchedUrl={requests.fetchActionMovies}
       />
       <HorizontalScroll_
-        title={categories[5]}
+        categoryName='fetchRomanceMovies'
+        title={categories[4]}
         fetchedUrl={requests.fetchRomanceMovies}
       />
       <HorizontalScroll_
-        title={categories[6]}
+        categoryName='fetchComedyMovies'
+        title={categories[5]}
         fetchedUrl={requests.fetchComedyMovies}
       />
       <HorizontalScroll_
-        title={categories[7]}
+        categoryName='fetchHorrorMovies'
+        title={categories[6]}
         fetchedUrl={requests.fetchHorrorMovies}
       />
       <HorizontalScroll_
-        title={categories[8]}
+        categoryName='fetchDocumentaries'
+        title={categories[7]}
         fetchedUrl={requests.fetchDocumentaries}
       />
     </div>
